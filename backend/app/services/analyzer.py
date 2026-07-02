@@ -5,8 +5,18 @@ def analyze_website(url):
 
     with sync_playwright() as p:
 
+        print("CUSTOM CHROMIUM PATH ACTIVE")
+
         browser = p.chromium.launch(
-            headless=True
+            executable_path="/opt/render/.cache/ms-playwright/chromium-1228/chrome-linux/chrome",
+            headless=True,
+            args=[
+                "--disable-blink-features=AutomationControlled",
+                "--disable-dev-shm-usage",
+                "--disable-gpu",
+                "--disable-setuid-sandbox",
+                "--no-sandbox"
+            ]    
         )
 
         context = browser.new_context(
