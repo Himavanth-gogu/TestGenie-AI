@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.pyc
+venv/
+.env
+
+# Node
+node_modules/
+dist/
+
+# IDE
+.vscode/
+
+# Playwright
+playwright-report/
+test-results/
+
+# Logs
+*.log
+
+# Executions
+backend/app/executions/
+
+# Reports
+backend/app/reports/*.pdf
+backend/app/reports/*.html
+
+# History
+backend/app/data/executions_history.json

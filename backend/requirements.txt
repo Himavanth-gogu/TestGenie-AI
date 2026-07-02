@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+playwright
+beautifulsoup4
+requests
+reportlab
+jinja2
+pydantic
+python-multipart
