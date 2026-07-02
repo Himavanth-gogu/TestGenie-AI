@@ -7,9 +7,9 @@ export default function ReportPreview() {
       color:
         "from-green-500/20 to-green-600/10",
       preview:
-        "http://127.0.0.1:8000/reports/report.html",
+        "https://testgenie-ai-docker.onrender.com/reports/report.html",
       download:
-        "http://127.0.0.1:8000/download/html",
+        "https://testgenie-ai-docker.onrender.com/download/html",
       badge: "Available"
     },
     {
@@ -19,9 +19,9 @@ export default function ReportPreview() {
       color:
         "from-red-500/20 to-red-600/10",
       preview:
-        "http://127.0.0.1:8000/reports/report.pdf",
+        "https://testgenie-ai-docker.onrender.com/reports/report.pdf",
       download:
-        "http://127.0.0.1:8000/download/pdf",
+        "https://testgenie-ai-docker.onrender.com/download/pdf",
       badge: "Ready"
     }
   ];

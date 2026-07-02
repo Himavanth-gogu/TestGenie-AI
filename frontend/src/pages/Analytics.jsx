@@ -11,7 +11,7 @@ export default function Analytics() {
   const fetchHistory = async () => {
     try {
       const response = await fetch(
-        "http://127.0.0.1:8000/dashboard/history"
+        "https://testgenie-ai-docker.onrender.com/dashboard/history"
       );
 
       const data = await response.json();

@@ -13,7 +13,7 @@ export default function Screenshots() {
   const loadHistory = async () => {
     try {
       const response = await fetch(
-        "http://127.0.0.1:8000/dashboard/stats"
+        "https://testgenie-ai-docker.onrender.com/dashboard/stats"
       );
 
       const data =
