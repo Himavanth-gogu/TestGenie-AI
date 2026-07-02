@@ -32,6 +32,10 @@ app = FastAPI(
     version="2.0.0"
 )
 
+os.makedirs("app/executions", exist_ok=True)
+os.makedirs("app/reports", exist_ok=True)
+os.makedirs("app/data", exist_ok=True)
+
 # ---------------------------------------------------
 # Static Files
 # ---------------------------------------------------
