@@ -40,6 +40,8 @@ def execute_tests(url):
             args=[
                 "--disable-blink-features=AutomationControlled",
                 "--disable-dev-shm-usage",
+                "--disable-gpu",
+                "--disable-setuid-sandbox",
                 "--no-sandbox"
             ]
         )
