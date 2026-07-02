@@ -250,8 +250,18 @@ def analyze(request: URLRequest):
         # ------------------------------------
         # Screenshot URLs
         # ------------------------------------
+        backend_url = "https://testgenie-ai-docker.onrender.com"
 
-        
+        screenshot_urls = []
+        for screenshot in screenshots:
+            relative = screenshot.replace("\\", "/")
+            if relative.startswith("app/"):
+                relative = relative[4:]
+            screenshot_urls.append(
+                f"{backend_url}/{relative}"
+            )    
+
+
 
     
                
