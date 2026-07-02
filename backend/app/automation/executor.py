@@ -36,6 +36,8 @@ def execute_tests(url):
     with sync_playwright() as p:
 
         browser = p.chromium.launch(
+            executable_path=
+            "/opt/render/.cache/ms-playwright/chromium-1228/chrome-linux/chrome",
             headless=True,
             args=[
                 "--disable-blink-features=AutomationControlled",
