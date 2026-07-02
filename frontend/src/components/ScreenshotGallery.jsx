@@ -1,3 +1,7 @@
+import {
+  getScreenshotUrl
+} from "../services/api";
+
 export default function ScreenshotGallery({
   screenshots = []
 }) {
@@ -7,17 +11,14 @@ export default function ScreenshotGallery({
   }
 
   return (
-    <div
-      className="
+    <div className="
       bg-[#111827]
       border border-slate-700/50
       rounded-[28px]
       p-8
       shadow-2xl
       backdrop-blur-xl
-      "
-    >
-      {/* Header */}
+    ">
       <div className="
         flex
         justify-between
@@ -52,26 +53,28 @@ export default function ScreenshotGallery({
         </div>
       </div>
 
-      {/* Gallery */}
-      <div
-        className="
+      <div className="
         grid
         grid-cols-1
         md:grid-cols-2
         xl:grid-cols-3
         gap-8
-        "
-      >
+      ">
         {screenshots.map(
           (
             screenshot,
             index
           ) => {
 
+            const imageUrl =
+              getScreenshotUrl(
+                screenshot
+              );
+
             const title =
               index === 0
-              ? "Homepage"
-              : `Page ${index}`;
+                ? "Homepage"
+                : `Page ${index}`;
 
             return (
               <div
@@ -82,126 +85,67 @@ export default function ScreenshotGallery({
                   border border-slate-700/50
                   rounded-3xl
                   overflow-hidden
-                  transition-all
-                  duration-300
-                  hover:scale-[1.02]
-                  hover:border-blue-500/40
-                  hover:shadow-blue-500/10
-                  hover:shadow-2xl
                 "
               >
+                <img
+                  src={imageUrl}
+                  alt={title}
+                  className="
+                    w-full
+                    h-56
+                    object-cover
+                  "
+                />
 
-                {/* Image */}
-                <div className="
-                  overflow-hidden
-                ">
-                  <img
-                    src={screenshot}
-                    alt={title}
-                    className="
-                      w-full
-                      h-56
-                      object-cover
-                      transition-transform
-                      duration-500
-                      group-hover:scale-105
-                    "
-                  />
-                </div>
-
-                {/* Content */}
                 <div className="p-6">
-
-                  <div className="
-                    flex
-                    justify-between
-                    items-center
+                  <h3 className="
+                    text-xl
+                    font-bold
                     mb-4
                   ">
-                    <h3 className="
-                      text-xl
-                      font-bold
-                    ">
-                      {title}
-                    </h3>
+                    {title}
+                  </h3>
 
-                    <span className="
-                      text-green-400
-                      text-sm
-                    ">
-                      Captured
-                    </span>
-                  </div>
-
-                  <div className="
-                    space-y-2
-                    text-sm
-                    text-gray-400
-                    mb-5
-                  ">
-                    <p>
-                      Resolution:
-                      1440 × 900
-                    </p>
-
-                    <p>
-                      Status:
-                      Screenshot Available
-                    </p>
-
-                    <p>
-                      Execution:
-                      Successful
-                    </p>
-                  </div>
-
-                  {/* Actions */}
                   <div className="
                     flex
                     gap-3
                   ">
                     <a
-                      href={screenshot}
+                      href={imageUrl}
                       target="_blank"
                       rel="noreferrer"
                       className="
                         flex-1
                         text-center
                         bg-blue-600
-                        hover:bg-blue-700
                         py-3
                         rounded-xl
-                        transition
                       "
                     >
                       Open
                     </a>
 
                     <a
-                      href={screenshot}
+                      href={imageUrl}
                       download
                       className="
                         flex-1
                         text-center
                         bg-slate-700
-                        hover:bg-slate-600
                         py-3
                         rounded-xl
-                        transition
                       "
                     >
                       Download
                     </a>
+
                   </div>
-
                 </div>
-
               </div>
             );
           }
         )}
       </div>
-
     </div>
   );
 }

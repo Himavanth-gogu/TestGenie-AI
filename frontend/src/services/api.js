@@ -1,12 +1,10 @@
 import axios from "axios";
 
+const BACKEND_URL =
+  "https://testgenie-ai-docker.onrender.com";
+
 const API = axios.create({
-  baseURL:
-    import.meta.env.VITE_API_URL ||
-    "http://127.0.0.1:8000",
-  headers: {
-    "Content-Type": "application/json",
-  },
+  baseURL: BACKEND_URL,
 });
 
 export const analyzeWebsite = (url) => {
@@ -27,8 +25,8 @@ export const downloadHtmlReport = (
   executionId = ""
 ) => {
   const reportUrl = executionId
-    ? `${API.defaults.baseURL}/download/html/${executionId}`
-    : `${API.defaults.baseURL}/download/html`;
+    ? `${BACKEND_URL}/download/html/${executionId}`
+    : `${BACKEND_URL}/download/html`;
 
   window.open(
     reportUrl,
@@ -40,8 +38,8 @@ export const downloadPdfReport = (
   executionId = ""
 ) => {
   const reportUrl = executionId
-    ? `${API.defaults.baseURL}/download/pdf/${executionId}`
-    : `${API.defaults.baseURL}/download/pdf`;
+    ? `${BACKEND_URL}/download/pdf/${executionId}`
+    : `${BACKEND_URL}/download/pdf`;
 
   window.open(
     reportUrl,
@@ -52,6 +50,7 @@ export const downloadPdfReport = (
 export const getScreenshotUrl = (
   screenshotPath
 ) => {
+
   if (!screenshotPath) {
     return "";
   }
@@ -62,7 +61,7 @@ export const getScreenshotUrl = (
     return screenshotPath;
   }
 
-  return `${API.defaults.baseURL}/${screenshotPath}`;
+  return `${BACKEND_URL}/${screenshotPath}`;
 };
 
 export default API;

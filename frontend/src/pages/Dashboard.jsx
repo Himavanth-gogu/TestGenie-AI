@@ -54,7 +54,7 @@ export default function Dashboard() {
 
       try {
         const statsResponse = await fetch(
-          `${import.meta.env.VITE_API_URL}/dashboard/stats`
+          "https://testgenie-ai-docker.onrender.com/dashboard/stats"
         );
 
         const statsData =

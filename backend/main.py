@@ -251,30 +251,10 @@ def analyze(request: URLRequest):
         # Screenshot URLs
         # ------------------------------------
 
-        screenshot_urls = []
+        
 
-        for path in screenshots:
-
-            normalized = path.replace(
-                "\\",
-                "/"
-            )
-
-            if "app/executions/" in normalized:
-
-                relative = normalized.split(
-                    "app/"
-                )[1]
-
-                backend_url = os.getenv(
-                    "BACKEND_URL",
-                    "http://127.0.0.1:8000"
-                )
-
-                screenshot_urls.append(
-                    f"{backend_url}/{relative}"
-                )
-
+    
+               
         # ------------------------------------
         # Broken Links
         # ------------------------------------
