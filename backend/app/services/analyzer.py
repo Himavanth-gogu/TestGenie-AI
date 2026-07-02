@@ -8,7 +8,6 @@ def analyze_website(url):
         print("CUSTOM CHROMIUM PATH ACTIVE")
 
         browser = p.chromium.launch(
-            executable_path="/opt/render/.cache/ms-playwright/chromium-1228/chrome-linux/chrome",
             headless=True,
             args=[
                 "--disable-blink-features=AutomationControlled",
