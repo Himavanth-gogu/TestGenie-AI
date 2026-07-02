@@ -35,10 +35,11 @@ def execute_tests(url):
 
     with sync_playwright() as p:
 
+        print("========== CUSTOM CHROMIUM PATH CODE RUNNING ==========")
+
         browser = p.chromium.launch(
-            executable_path=
-            "/opt/render/.cache/ms-playwright/chromium-1228/chrome-linux/chrome",
-            headless=True,
+            headless=False,
+            executable_path="/opt/render/.cache/ms-playwright/chromium-1228/chrome-linux/chrome",
             args=[
                 "--disable-blink-features=AutomationControlled",
                 "--disable-dev-shm-usage",
