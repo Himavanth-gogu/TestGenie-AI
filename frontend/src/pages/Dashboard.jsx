@@ -54,7 +54,7 @@ export default function Dashboard() {
 
       try {
         const statsResponse = await fetch(
-          "http://127.0.0.1:8000/dashboard/stats"
+          `${import.meta.env.VITE_API_URL}/dashboard/stats`
         );
 
         const statsData =

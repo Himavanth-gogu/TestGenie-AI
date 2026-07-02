@@ -4,6 +4,9 @@ const API = axios.create({
   baseURL:
     import.meta.env.VITE_API_URL ||
     "http://127.0.0.1:8000",
+  headers: {
+    "Content-Type": "application/json",
+  },
 });
 
 export const analyzeWebsite = (url) => {
@@ -20,18 +23,46 @@ export const getExecutionHistory = () => {
   return API.get("/dashboard/history");
 };
 
-export const downloadHtmlReport = () => {
+export const downloadHtmlReport = (
+  executionId = ""
+) => {
+  const reportUrl = executionId
+    ? `${API.defaults.baseURL}/download/html/${executionId}`
+    : `${API.defaults.baseURL}/download/html`;
+
   window.open(
-    `${import.meta.env.VITE_API_URL}/download/html`,
+    reportUrl,
     "_blank"
   );
 };
 
-export const downloadPdfReport = () => {
+export const downloadPdfReport = (
+  executionId = ""
+) => {
+  const reportUrl = executionId
+    ? `${API.defaults.baseURL}/download/pdf/${executionId}`
+    : `${API.defaults.baseURL}/download/pdf`;
+
   window.open(
-    `${import.meta.env.VITE_API_URL}/download/pdf`,
+    reportUrl,
     "_blank"
   );
+};
+
+export const getScreenshotUrl = (
+  screenshotPath
+) => {
+  if (!screenshotPath) {
+    return "";
+  }
+
+  if (
+    screenshotPath.startsWith("http")
+  ) {
+    return screenshotPath;
+  }
+
+  return `${API.defaults.baseURL}/${screenshotPath}`;
 };
 
 export default API;

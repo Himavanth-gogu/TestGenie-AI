@@ -266,8 +266,13 @@ def analyze(request: URLRequest):
                     "app/"
                 )[1]
 
+                backend_url = os.getenv(
+                    "BACKEND_URL",
+                    "http://127.0.0.1:8000"
+                )
+
                 screenshot_urls.append(
-                    f"http://127.0.0.1:8000/{relative}"
+                    f"{backend_url}/{relative}"
                 )
 
         # ------------------------------------
@@ -411,8 +416,34 @@ def analyze(request: URLRequest):
 # ---------------------------------------------------
 
 @app.get("/dashboard/stats")
-def dashboard_stats():
-    return get_dashboard_stats()
+async def get_dashboard_api():
+    history_file = os.path.join(
+        "app",
+        "data",
+        "executions_history.json"
+    )
+
+    try:
+        if os.path.exists(history_file):
+            with open(
+                history_file,
+                "r"
+            ) as f:
+                history = json.load(f)
+        else:
+            history = []
+
+        return {
+            "execution_history": history,
+            "total_executions": len(history)
+        }
+
+    except Exception as e:
+        return {
+            "execution_history": [],
+            "total_executions": 0,
+            "error": str(e)
+        }
 
 
 # ---------------------------------------------------
@@ -420,22 +451,29 @@ def dashboard_stats():
 # ---------------------------------------------------
 
 @app.get("/dashboard/history")
-def get_execution_history():
-
+async def get_execution_history_api():
     history_file = os.path.join(
         "app",
         "data",
         "executions_history.json"
     )
 
-    if not os.path.exists(history_file):
-        return []
+    try:
+        if os.path.exists(history_file):
+            with open(
+                history_file,
+                "r"
+            ) as f:
+                history = json.load(f)
+        else:
+            history = []
 
-    with open(
-        history_file,
-        "r"
-    ) as f:
-        return json.load(f)
+        return history
+
+    except Exception as e:
+        return {
+            "error": str(e)
+        }
 
 
 # ---------------------------------------------------
