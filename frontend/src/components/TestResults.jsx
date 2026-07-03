@@ -14,8 +14,8 @@ export default function TestResults({ results = [] }) {
       case "RESTRICTED":
         return "border-yellow-500 bg-yellow-900/30";
 
-      case "TIMEOUT":
-        return "border-orange-500 bg-orange-900/30";
+      case "SKIPPED":
+        return "border-gray-500 bg-gray-900/30";
 
       case "AUTH_REQUIRED":
         return "border-purple-500 bg-purple-900/30";
@@ -36,8 +36,8 @@ export default function TestResults({ results = [] }) {
       case "RESTRICTED":
         return "🛡️";
 
-      case "TIMEOUT":
-        return "⏱️";
+      case "SKIPPED":
+        return "🟡";
 
       case "AUTH_REQUIRED":
         return "🔐";

@@ -123,17 +123,25 @@ def analyze(request: URLRequest):
                 analysis["error"]
             ).lower()
 
-            if "timeout" in error_text:
+            if ( 
+                "timeout" in error_text
+                or "timed out" in error_text
+                or "exceeded" in error_text
+                or "page.goto" in error_text
+            ):
 
-                status = "TIMEOUT"
+                status = "SKIPPED"
                 reason = (
-                    "The website exceeded "
-                    "the configured timeout."
+                    "Automated browser execution could not "
+                    "be completed within the configured timeout."
                 )
 
                 recommendation = (
-                    "Increase timeout "
-                    "or verify availability."
+                    "The target application may use anti-bot "
+                    "protection, human verification, security "
+                    "restrictions or heavy client-side rendering. "
+                    "Consider API testing, authenticated sessions "
+                    "or approved test environments."
                 )
 
             elif (

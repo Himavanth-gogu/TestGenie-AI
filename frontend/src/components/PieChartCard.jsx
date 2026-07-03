@@ -124,7 +124,7 @@ export default function PieChartCard({
 
           <LegendRow
             color="bg-cyan-500"
-            label="Timeout"
+            label="SKIPPED"
             value="0"
           />
 
