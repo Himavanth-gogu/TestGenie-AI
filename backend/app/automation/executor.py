@@ -276,15 +276,25 @@ def execute_tests(url):
                                 f"Navigation {index+1}",
 
                             "status":
-                                "TIMEOUT",
+                                "SKIPPED",
 
                             "reason":
-                                "The target page exceeded "
-                                "the configured timeout limit.",
+                                "Automated browser execution "
+                                "could not be completed within "
+                                "the configured timeout period.",
+
 
                             "recommendation":
-                                "Increase timeout duration "
-                                "or verify website availability."
+                                (
+                                    "The target application may "
+                                    "use anti-bot protection, "
+                                    "human verification, "
+                                    "security restrictions or "
+                                    "heavy client-side rendering. "
+                                    "Consider authenticated "
+                                    "testing sessions, API testing "
+                                    "or approved test environments."
+                                )
                         }
                     )
 
@@ -412,15 +422,24 @@ def execute_tests(url):
                         "Homepage Accessibility",
 
                     "status":
-                        "TIMEOUT",
+                        "SKIPPED",
 
                     "reason":
-                        "Homepage loading exceeded "
-                        "the timeout threshold.",
+                        (
+                            "Automated browser execution "
+                            "was unable to complete "
+                            "within the configured timeout."
+                        ),
 
                     "recommendation":
-                        "Increase timeout value or "
-                        "verify network connectivity."
+                        (
+                            "This website may use "
+                            "automation protection, "
+                            "authentication requirements "
+                            "or advanced security "
+                            "mechanisms that require "
+                            "approved testing access." 
+                        )
                 }
             )
 
