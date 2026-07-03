@@ -209,6 +209,11 @@ def analyze(request: URLRequest):
                     "automated access."
                 )
 
+
+            print("DEBUG STATUS:", status)
+            print("DEBUG REASON:", reason)
+            print("DEBUG RECOMMENDATION:", recommendation)
+
             return {
                 "success": True,
                 "execution_id": None,
